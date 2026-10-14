@@ -486,3 +486,53 @@ button:disabled {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Accessibility: WCAG Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--spacing-md);
+  background-color: var(--color-primary);
+  color: #071324;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  z-index: 10000;
+  transition: top 0.2s ease;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: var(--spacing-md);
+  outline: 3px solid #ffffff;
+}
+
+/* Page Loading Skeleton for Suspense */
+.page-loading-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--spacing-md);
+}
+
+.loading-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(56, 189, 248, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+

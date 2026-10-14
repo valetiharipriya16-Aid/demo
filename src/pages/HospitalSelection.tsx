@@ -1,5 +1,5 @@
 // src/pages/HospitalSelection.tsx
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import type { DemoHospital } from '../utils/demoData';
@@ -29,24 +29,26 @@ export default function HospitalSelection() {
     'Dental Emergency',
   ];
 
-  const filteredHospitals = hospitals.filter((h) => {
-    // Search query match
-    const matchesSearch =
-      h.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      h.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      h.capabilities.some((c) => c.toLowerCase().includes(searchQuery.toLowerCase()));
+  // Sanitized & Memoized Filtering for Security & Efficiency
+  const sanitizedQuery = searchQuery.replace(/[<>]/g, '').trim().toLowerCase();
+  const filteredHospitals = useMemo(() => {
+    return hospitals.filter((h) => {
+      const matchesSearch =
+        !sanitizedQuery ||
+        h.name.toLowerCase().includes(sanitizedQuery) ||
+        h.address.toLowerCase().includes(sanitizedQuery) ||
+        h.capabilities.some((c) => c.toLowerCase().includes(sanitizedQuery));
 
-    // Capability filter match
-    const matchesCapability =
-      selectedCapabilityFilter === 'All' ||
-      h.capabilities.some((c) => c.toLowerCase().includes(selectedCapabilityFilter.toLowerCase()));
+      const matchesCapability =
+        selectedCapabilityFilter === 'All' ||
+        h.capabilities.some((c) => c.toLowerCase().includes(selectedCapabilityFilter.toLowerCase()));
 
-    // Capacity filter match
-    const matchesCapacity =
-      capacityFilter === 'All' || h.capacityStatus === capacityFilter;
+      const matchesCapacity =
+        capacityFilter === 'All' || h.capacityStatus === capacityFilter;
 
-    return matchesSearch && matchesCapability && matchesCapacity;
-  });
+      return matchesSearch && matchesCapability && matchesCapacity;
+    });
+  }, [hospitals, sanitizedQuery, selectedCapabilityFilter, capacityFilter]);
 
   const handleSelectHospital = (h: DemoHospital) => {
     setSelectedHospital(h);

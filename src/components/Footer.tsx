@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
+const CURRENT_YEAR = 2026;
+
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -29,7 +31,7 @@ export default function Footer() {
             </span>
           </div>
           <div className="footer-copy">
-            © {new Date().getFullYear()} ClearPath Project. Built for Emergency Response Innovation.
+            © {CURRENT_YEAR} ClearPath Project. Built for Emergency Response Innovation.
           </div>
         </div>
       </div>

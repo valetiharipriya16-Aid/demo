@@ -1,5 +1,5 @@
 // src/pages/History.tsx
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 import type { SeedJourneyRecord } from '../utils/demoData';
@@ -14,7 +14,7 @@ export default function History() {
   const [selectedJourneyModal, setSelectedJourneyModal] = useState<SeedJourneyRecord | null>(null);
 
   // If there's an active journey currently en route, create a live preview record
-  const allJourneys: SeedJourneyRecord[] = [
+  const allJourneys: SeedJourneyRecord[] = useMemo(() => [
     ...(currentJourney && currentJourney.status !== 'Completed'
       ? [
           {
@@ -37,20 +37,25 @@ export default function History() {
         ]
       : []),
     ...history,
-  ];
+  ], [currentJourney, history]);
 
-  const filteredJourneys = allJourneys.filter((j) => {
-    const matchesSearch =
-      j.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      j.hospitalName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      j.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      j.ambulanceId.toLowerCase().includes(searchQuery.toLowerCase());
+  // Sanitized & Memoized Filtering
+  const sanitizedQuery = searchQuery.replace(/[<>]/g, '').trim().toLowerCase();
+  const filteredJourneys = useMemo(() => {
+    return allJourneys.filter((j) => {
+      const matchesSearch =
+        !sanitizedQuery ||
+        j.id.toLowerCase().includes(sanitizedQuery) ||
+        j.hospitalName.toLowerCase().includes(sanitizedQuery) ||
+        j.category.toLowerCase().includes(sanitizedQuery) ||
+        j.ambulanceId.toLowerCase().includes(sanitizedQuery);
 
-    const matchesStatus =
-      statusFilter === 'All' || j.status === statusFilter;
+      const matchesStatus =
+        statusFilter === 'All' || j.status === statusFilter;
 
-    return matchesSearch && matchesStatus;
-  });
+      return matchesSearch && matchesStatus;
+    });
+  }, [allJourneys, sanitizedQuery, statusFilter]);
 
   return (
     <div className="history-page-container">
