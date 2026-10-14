@@ -1,0 +1,188 @@
+/* src/pages/AlertDetailsModal.css */
+
+.alert-details-modal {
+  max-width: 680px;
+}
+
+.adm-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adm-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (min-width: 600px) {
+  .adm-summary-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.adm-metric-box {
+  background-color: rgba(11, 18, 32, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.adm-val {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.adm-sub {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* Simulated Camera Feed */
+.adm-cam-preview {
+  background-color: #050a12;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+}
+
+.cam-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  background-color: rgba(11, 18, 32, 0.9);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: var(--color-muted);
+}
+
+.cam-rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-emergency);
+  animation: pulseGlowRed 1.2s infinite;
+}
+
+.cam-time {
+  margin-left: auto;
+  color: var(--color-primary);
+}
+
+.cam-display {
+  position: relative;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #07101e;
+  overflow: hidden;
+}
+
+.cam-overlay-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 25px 25px;
+}
+
+.cam-crosshair {
+  width: 40px;
+  height: 40px;
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+  border-radius: 50%;
+}
+
+.cam-hud-text {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: rgba(56, 189, 248, 0.75);
+  line-height: 1.4;
+}
+
+/* SOP Card */
+.sop-card {
+  padding: 0.75rem 1rem;
+  background-color: rgba(56, 189, 248, 0.06);
+  border-color: rgba(56, 189, 248, 0.25);
+  margin-bottom: var(--spacing-md);
+}
+
+.sop-title {
+  font-size: 0.88rem;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.sop-text {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* History List */
+.adm-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: 0.4rem;
+}
+
+.adm-history-entry {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(11, 18, 32, 0.5);
+  border-radius: var(--radius-sm);
+  border-left: 2px solid var(--color-primary);
+  font-size: 0.82rem;
+}
+
+.adm-entry-time {
+  font-family: monospace;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.adm-entry-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-entry-action {
+  color: var(--color-text);
+}
+
+.adm-entry-actor {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+}
+
+.adm-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.adm-status-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}

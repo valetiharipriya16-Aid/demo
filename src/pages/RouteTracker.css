@@ -1,0 +1,398 @@
+/* src/pages/RouteTracker.css */
+
+.route-tracker-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.route-header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.map-mode-toggle {
+  display: flex;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2px;
+  gap: 2px;
+}
+
+/* Layout Grid */
+.tracker-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 1024px) {
+  .tracker-layout-grid {
+    grid-template-columns: 1fr 380px;
+  }
+}
+
+/* Map Card */
+.map-display-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+.map-toolbar-overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding: 0.65rem var(--spacing-md);
+  background-color: rgba(11, 18, 32, 0.85);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 10;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legend-dot.red { background-color: var(--color-emergency); }
+.legend-dot.cyan { background-color: var(--color-primary); }
+.legend-dot.green { background-color: var(--color-success); }
+.legend-dot.amber { background-color: var(--color-warning); }
+
+.map-speed-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Map Viewport */
+.map-viewport-wrapper {
+  flex: 1;
+  position: relative;
+  background-color: #080d16;
+  min-height: 420px;
+}
+
+.leaflet-full-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Custom Leaflet DivPins */
+.leaflet-custom-div-icon {
+  background: transparent;
+  border: none;
+}
+
+.leaflet-ambulance-pin {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(240, 68, 82, 0.3);
+  border: 2px solid var(--color-emergency);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(240, 68, 82, 0.7);
+}
+
+.leaflet-hospital-pin {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(56, 189, 248, 0.25);
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.7);
+}
+
+.leaflet-intersection-pin {
+  width: 28px;
+  height: 28px;
+  background-color: #111C2E;
+  border: 2px solid #2B3A50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Schematic Vector Map */
+.schematic-vector-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #080e18;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-xl);
+}
+
+.schematic-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(43, 58, 80, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(43, 58, 80, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.schematic-corridor-line {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 6px;
+  background-color: #1e3a5f;
+  border-radius: 3px;
+}
+
+.schematic-active-line {
+  position: absolute;
+  left: 5%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-emergency));
+  border-radius: 3px;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 12px var(--color-primary);
+}
+
+.schematic-node-pin {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background-color: #111C2E;
+  border: 2px solid #2B3A50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sc-node-tooltip {
+  position: absolute;
+  bottom: 38px;
+  background-color: rgba(11, 18, 32, 0.95);
+  border: 1px solid var(--color-border);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  display: none;
+  flex-direction: column;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.schematic-node-pin:hover .sc-node-tooltip {
+  display: flex;
+}
+
+.schematic-ambulance-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  background-color: rgba(240, 68, 82, 0.25);
+  border: 2px solid var(--color-emergency);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  z-index: 10;
+  transition: left 0.4s ease;
+}
+
+.sc-amb-label {
+  position: absolute;
+  top: 44px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background-color: rgba(11, 18, 32, 0.9);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  color: var(--color-emergency);
+}
+
+.schematic-hospital-marker {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: rgba(56, 189, 248, 0.2);
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  z-index: 6;
+}
+
+.sc-hosp-label {
+  position: absolute;
+  top: 46px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background-color: rgba(11, 18, 32, 0.9);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  color: var(--color-primary);
+}
+
+/* Map Controls Footer */
+.map-controls-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: rgba(11, 18, 32, 0.85);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-control-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.route-progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.rp-label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.rp-track {
+  width: 120px;
+  height: 8px;
+  background-color: #0b1220;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.rp-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.rp-percent {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 38px;
+}
+
+/* Sidebar Metrics */
+.sidebar-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.sb-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: 0.88rem;
+}
+
+.sb-metric-row:last-child {
+  border-bottom: none;
+}
+
+.sbm-label {
+  color: var(--color-muted);
+}
+
+.sbm-val {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Sidebar Alerts List */
+.sidebar-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.sidebar-alert-card {
+  padding: 0.6rem 0.75rem;
+  background-color: rgba(11, 18, 32, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-alert-card.status-pending {
+  border-color: var(--color-warning);
+  background-color: rgba(245, 158, 11, 0.08);
+}
+
+.sidebar-alert-card.status-cleared {
+  border-color: var(--color-success);
+  background-color: rgba(34, 197, 94, 0.08);
+}
+
+.sal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sal-name {
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.sal-meta {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}

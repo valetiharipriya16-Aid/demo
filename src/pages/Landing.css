@@ -1,0 +1,458 @@
+/* src/pages/Landing.css */
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+/* Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+  padding: var(--spacing-lg) 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-xl) 0;
+  }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+.hero-headline {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .hero-headline {
+    font-size: 3.4rem;
+  }
+}
+
+.text-cyan-glow {
+  color: var(--color-primary);
+  text-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+  margin-bottom: var(--spacing-xl);
+  max-width: 620px;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-btn {
+  padding: 0.85rem 1.6rem;
+  font-size: 0.98rem;
+}
+
+.btn-arrow, .btn-icon {
+  font-size: 1.1rem;
+}
+
+.hero-demo-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+.demo-icon {
+  color: var(--color-warning);
+}
+
+/* Hero Map / Schematic Visual */
+.hero-visual {
+  width: 100%;
+}
+
+.simulation-preview-card {
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(56, 189, 248, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  background-color: rgba(11, 18, 32, 0.6);
+}
+
+.preview-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.preview-indicator {
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-emergency);
+  border-radius: 50%;
+  animation: pulseGlowRed 1.5s infinite;
+}
+
+.preview-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.schematic-map-preview {
+  position: relative;
+  height: 240px;
+  background-color: #080e18;
+  overflow: hidden;
+}
+
+.map-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(43, 58, 80, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(43, 58, 80, 0.25) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.map-route-svg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.route-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Nodes */
+.node-ambulance {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background-color: rgba(240, 68, 82, 0.25);
+  border: 2px solid var(--color-emergency);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 10;
+}
+
+.node-intersection {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.node-pin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.node-pin.cleared {
+  background-color: var(--color-success);
+  color: #071d10;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.node-pin.pending {
+  background-color: var(--color-emergency);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(240, 68, 82, 0.5);
+}
+
+.node-pin.upcoming {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-muted);
+  color: var(--color-muted);
+}
+
+.node-label {
+  font-size: 0.7rem;
+  color: var(--color-text);
+  font-weight: 600;
+  background-color: rgba(11, 18, 32, 0.85);
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.node-hospital {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.hospital-pin {
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+}
+
+.preview-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: rgba(11, 18, 32, 0.75);
+  border-top: 1px solid var(--color-border);
+}
+
+.preview-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.text-cyan { color: var(--color-primary); }
+.text-emergency { color: var(--color-emergency); }
+.text-amber { color: var(--color-warning); }
+.text-green { color: var(--color-success); }
+
+/* Features Section */
+.features-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.section-header-centered {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  height: 100%;
+}
+
+.feature-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature-icon-box.cyan {
+  background-color: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.feature-icon-box.emergency {
+  background-color: rgba(240, 68, 82, 0.15);
+  border: 1px solid rgba(240, 68, 82, 0.3);
+}
+
+.feature-icon-box.green {
+  background-color: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.feature-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.feature-card-desc {
+  font-size: 0.92rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.feature-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: var(--spacing-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Workflow Steps */
+.workflow-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .steps-container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+.step-card {
+  flex: 1;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  opacity: 0.9;
+}
+
+.step-content h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.step-content p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.step-divider {
+  display: none;
+  font-size: 1.6rem;
+  color: var(--color-border);
+  align-self: center;
+}
+
+@media (min-width: 860px) {
+  .step-divider {
+    display: block;
+  }
+}
+
+.workflow-action-bar {
+  display: flex;
+  justify-content: center;
+}
+
+/* Guide Step Items inside Modal */
+.guide-step-item {
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.guide-step-item:last-child {
+  border-bottom: none;
+}
+
+.guide-step-item h4 {
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+}
+
+.guide-step-item p {
+  font-size: 0.88rem;
+  line-height: 1.5;
+}

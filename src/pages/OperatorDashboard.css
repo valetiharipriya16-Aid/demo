@@ -1,0 +1,325 @@
+/* src/pages/OperatorDashboard.css */
+
+.operator-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.operator-quick-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.operator-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 1024px) {
+  .operator-grid {
+    grid-template-columns: 440px 1fr;
+  }
+}
+
+/* Priority Button Group */
+.priority-button-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xs);
+}
+
+.priority-btn {
+  padding: 0.55rem 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.priority-btn.critical.active {
+  background-color: rgba(240, 68, 82, 0.2);
+  border-color: var(--color-emergency);
+  color: var(--color-emergency);
+}
+
+.priority-btn.high.active {
+  background-color: rgba(245, 158, 11, 0.2);
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.priority-btn.medium.active {
+  background-color: rgba(56, 189, 248, 0.2);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Selected Hospital Snippet */
+.selected-hospital-snippet {
+  background-color: rgba(11, 18, 32, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.snippet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.snippet-caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 2px 0;
+}
+
+.cap-tag {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.snippet-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+/* Action Cluster */
+.operator-action-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--spacing-md);
+}
+
+.btn-large {
+  padding: 0.95rem;
+  font-size: 1.05rem;
+  width: 100%;
+}
+
+.secondary-controls-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xs);
+}
+
+.secondary-controls-row button {
+  font-size: 0.8rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.sim-speed-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(11, 18, 32, 0.4);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.speed-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+/* Telemetry Grid */
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 600px) {
+  .telemetry-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.telemetry-item {
+  background-color: rgba(11, 18, 32, 0.5);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.t-label {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+.t-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Corridor Clearance Progress */
+.corridor-progress-box {
+  background-color: rgba(11, 18, 32, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.cp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cp-counts {
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: #0b1220;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Intersections List */
+.intersections-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.intersection-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  background-color: rgba(11, 18, 32, 0.5);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  transition: border-color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .intersection-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.intersection-row.active-corridor {
+  border-color: var(--color-primary);
+  background-color: rgba(56, 189, 248, 0.08);
+}
+
+.int-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.int-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.int-pin {
+  font-size: 1.1rem;
+}
+
+.int-name {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.int-cross {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* Timeline */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.timeline-entry {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(11, 18, 32, 0.4);
+  border-left: 3px solid var(--color-border);
+  font-size: 0.88rem;
+}
+
+.timeline-entry.alert {
+  border-left-color: var(--color-emergency);
+  background-color: rgba(240, 68, 82, 0.08);
+}
+
+.timeline-entry.warning {
+  border-left-color: var(--color-warning);
+  background-color: rgba(245, 158, 11, 0.08);
+}
+
+.timeline-entry.success {
+  border-left-color: var(--color-success);
+  background-color: rgba(34, 197, 94, 0.08);
+}
+
+.timeline-entry.info {
+  border-left-color: var(--color-primary);
+  background-color: rgba(56, 189, 248, 0.08);
+}
+
+.timeline-time {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.timeline-text {
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.empty-state-text {
+  color: var(--color-muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,133 @@
+/* src/pages/History.css */
+
+.history-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.history-header-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.history-filter-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .history-filter-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .history-filter-card .search-box {
+    flex: 1;
+    max-width: 480px;
+  }
+}
+
+.history-tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.history-table-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.history-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.history-data-table th {
+  background-color: rgba(11, 18, 32, 0.7);
+  color: var(--color-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 0.85rem var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.history-data-table td {
+  padding: 0.85rem var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.history-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.jrn-id-tag {
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--color-text);
+}
+
+.jrn-unit-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.jrn-cat {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.jrn-hosp {
+  font-weight: 600;
+}
+
+.jrn-time-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.8rem;
+}
+
+.jrn-duration {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.jrn-int-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.jrn-cleared {
+  font-weight: 600;
+}
+
+.jrn-avg-time {
+  font-size: 0.72rem;
+  color: var(--color-success);
+}
+
+.empty-history-box {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--color-muted);
+  font-style: italic;
+}

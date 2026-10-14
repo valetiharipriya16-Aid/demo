@@ -1,0 +1,108 @@
+/* src/pages/Settings.css */
+
+.settings-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.settings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  max-width: 860px;
+}
+
+/* Role Selection Cards */
+.role-selection-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 680px) {
+  .role-selection-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.role-select-box {
+  background-color: rgba(11, 18, 32, 0.5);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  transition: all 0.2s ease;
+}
+
+.role-select-box:hover {
+  border-color: #3e5577;
+  transform: translateY(-2px);
+}
+
+.role-select-box.active-role {
+  border-color: var(--color-primary);
+  background-color: rgba(56, 189, 248, 0.08);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.rs-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.rs-icon {
+  font-size: 1.5rem;
+}
+
+.rs-desc {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.rs-profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* Speed Selector */
+.speed-selector-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: 4px;
+}
+
+.checkbox-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.checkbox-toggle-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Reset Card */
+.reset-card {
+  border-color: rgba(240, 68, 82, 0.3);
+  background-color: rgba(240, 68, 82, 0.04);
+}

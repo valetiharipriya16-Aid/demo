@@ -1,0 +1,260 @@
+/* src/pages/OfficerDashboard.css */
+
+.officer-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.officer-quick-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* Priority Warning Banner */
+.officer-priority-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(240, 68, 82, 0.15);
+  border: 1px solid var(--color-emergency);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  box-shadow: var(--shadow-emergency);
+}
+
+.opb-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.opb-siren {
+  font-size: 1.8rem;
+}
+
+.opb-title {
+  color: var(--color-emergency);
+  font-size: 1.05rem;
+}
+
+.opb-desc {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  margin-top: 2px;
+}
+
+/* Filter Tabs */
+.officer-tabs-bar {
+  display: flex;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+.officer-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.officer-tab-btn:hover {
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.officer-tab-btn.active {
+  color: var(--color-primary);
+  background-color: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* Alert Cards Grid */
+.officer-alerts-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.officer-alert-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  border-left: 5px solid var(--color-border);
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.officer-alert-card:hover {
+  transform: translateY(-2px);
+}
+
+.officer-alert-card.status-pending {
+  border-left-color: var(--color-warning);
+  background-color: rgba(245, 158, 11, 0.04);
+}
+
+.officer-alert-card.status-active {
+  border-left-color: var(--color-primary);
+  background-color: rgba(56, 189, 248, 0.04);
+}
+
+.officer-alert-card.status-cleared {
+  border-left-color: var(--color-success);
+  background-color: rgba(34, 197, 94, 0.04);
+}
+
+.oac-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.oac-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 4px;
+}
+
+.oac-id {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+.oac-intersection {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.oac-cross {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.oac-eta-badge {
+  background-color: rgba(11, 18, 32, 0.7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.eta-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+}
+
+.eta-seconds {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-warning);
+}
+
+.eta-dist {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* Meta Grid */
+.oac-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  background-color: rgba(11, 18, 32, 0.5);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.65rem var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .oac-meta-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.oac-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.oac-meta-val {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+/* Directive Box */
+.oac-directive-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.9rem;
+  color: var(--color-text);
+  font-size: 0.88rem;
+}
+
+.directive-icon {
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+/* Actions Bar */
+.oac-actions-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.cleared-indicator {
+  color: var(--color-success);
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Empty State */
+.officer-empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.empty-icon {
+  font-size: 3rem;
+}
+
+.empty-action-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
